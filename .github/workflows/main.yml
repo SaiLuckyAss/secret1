@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: get public key
         run: |
-          pk=$(curl -X GET \
+          pk=$(curl \
           -H "Authorization: token ${{secrets.PAT}}" \
           -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/SaiLuckyAss/consume/actions/secrets/public-key" | jq '. key')
