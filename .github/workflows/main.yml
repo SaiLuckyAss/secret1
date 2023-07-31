@@ -1,0 +1,15 @@
+name: sec
+on: [workflow_dispatch]
+jobs:
+  ID:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get public key
+        run: |
+          pk=$(curl -X GET \
+          -H "Authorization: token ${{secrets.PAT}}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          "https://api.github.com/repos/SaiLuckyAss/consume/actions/secrets/public-key" | jq '. 'key')
+          echo $pk
+        shell: bash
+      
